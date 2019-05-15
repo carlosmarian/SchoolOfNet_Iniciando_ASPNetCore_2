@@ -32,5 +32,11 @@ namespace NetCore2.Controllers
         public IActionResult SchoolOfNet(){
             return Content("Novo teste");
         }
+
+        [HttpGet("Query")]
+        public IActionResult Query(){
+            var nome = Request.Query["nome"];
+            return Content("Nome via Query: "+ nome);
+        }
     }
 }
