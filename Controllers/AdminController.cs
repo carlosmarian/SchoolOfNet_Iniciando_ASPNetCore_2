@@ -38,5 +38,21 @@ namespace NetCore2.Controllers
             var nome = Request.Query["nome"];
             return Content("Nome via Query: "+ nome);
         }
+
+        [HttpGet("view")]
+        public IActionResult visualizar(){
+
+            //Uma forma de passar parametro para a view
+            ViewData["helloWorld"] = true;
+
+            ViewData["nome"] = "Carlos";    
+            return View();
+        }
+
+        [HttpGet("semnada")]
+        public IActionResult semnada(){
+            //Apresentar um view com nome dif do metodo.
+            return View("nada");
+        }
     }
 }

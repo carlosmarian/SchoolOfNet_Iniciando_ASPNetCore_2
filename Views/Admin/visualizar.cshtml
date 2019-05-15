@@ -1,0 +1,12 @@
+@{
+    ViewData["Title"] = "Change title";
+}
+
+<h1>Hello world - My first view !</h1>
+<h1>Valor @ViewData["helloWorld"]</h1>
+@if((bool)ViewData["helloWorld"]){
+    <h1>Oi</h1>
+}else{
+    <h1>by</h1>
+}
+<h1>Valor @ViewData["nome"]</h1>
