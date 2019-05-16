@@ -1,5 +1,6 @@
 using System;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Primitives;
 
 namespace NetCore2.Controllers
 {
@@ -7,7 +8,23 @@ namespace NetCore2.Controllers
     [Route("painel/admin")]
     public class AdminController : Controller
     {
-        
+
+        [HttpGet("form")]    
+        public IActionResult form(){
+            return View();
+        }
+        [HttpPost("dados")]    
+        public IActionResult dados(){
+            StringValues nome;
+            StringValues email;
+
+            //Obter os valores do form
+            Request.Form.TryGetValue("nome", out nome) ;
+            Request.Form.TryGetValue("email", out email);
+
+            return Content("Form Enviado: "+ nome+" "+email);
+        }
+
         //Se mudar a rota padrão do controller, deve mapear cada metodo com verbo HTTP
         //De deixar vazio ele usa o nome do metodo. Pode ter mais de um mapeamento para o mesmo metodo.
         //[HttpGet("")]
